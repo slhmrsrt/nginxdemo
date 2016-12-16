@@ -35,7 +35,7 @@ These are the important variables on 'defaults/main.yml'
 
 If you're going to use this role for provisioning Vagrant, please change this path to your synced folder so you can work on your project on your own OS and Vagrant together.
 
-`venv_path:` Default is `home/ubuntu/flaskapp/flaskappenv`. If you are going to use the test application `flaskapp` under `tests`, you should move or copy it to `/home/ubuntu`.
+`venv_path:` Default is `home/ubuntu/flaskapp/flaskappenv`. If you are going to use the test application `flaskapp` under `tests`, you should move or copy it to `project_path`.
 
 ### Example Playbook
 
