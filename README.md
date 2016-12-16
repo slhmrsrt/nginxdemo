@@ -31,7 +31,7 @@ These are the important variables on 'defaults/main.yml'
 
 `project_name:` Default is `flaskapp`. You should change this parameter to your own application name. This will make it easier to troubleshoot after deployment.
 
-`project_path:` Default is `home/ubuntu/flaskapp`. You should change this parameter to your own application path or if you are going to use the test application `flaskapp` under `tests`, you should move or copy it to `/home/ubuntu`.
+`project_path:` Default is `home/ubuntu/flaskapp`. You should change this parameter to your own application path or if you are going to use the test application `flaskapp` under `tests`, you should move or copy it to `project_path`.
 
 If you're going to use this role for provisioning Vagrant, please change this path to your synced folder so you can work on your project on your own OS and Vagrant together.
 
