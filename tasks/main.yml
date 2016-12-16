@@ -1,0 +1,45 @@
+---
+- name: Add nginx_signing.key for the latest version available
+  apt_key: url="{{ nginx_key_url}}" state=present
+    
+- name: Add first nginx repository
+  apt_repository: repo='deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' state=present
+      
+- name: Add second nginx repository
+  apt_repository: repo='deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' state=present
+         
+- name: Install necessary system packages
+  apt: pkg={{ item }} state=installed update-cache=yes
+  with_items: "{{ system_packages }}"
+
+- name: Update pip
+  command: /usr/bin/pip install --upgrade pip     
+
+- name: Install pip packages
+  pip: name={{ item }}
+  with_items: "{{ pip_packages }}"
+
+- name: Install nginx configuration file
+  copy: src=files/nginx.conf dest=/etc/nginx/nginx.conf
+
+- name: Install application nginx.conf file
+  copy: src=files/default.conf dest=/etc/nginx/conf.d/default.conf
+
+- name: Create virtual enviroment
+  pip: virtualenv={{ venv_path }} requirements={{ venv_requirements_path }}
+
+- name: Create gunicorn starter script for upstart
+  template: src=templates/flaskappupstart.conf.j2 dest=/etc/init/{{ project_name }}.conf
+  
+- name: restart nginx
+  service: name=nginx state=restarted
+  sudo_user: root
+
+- name: reload nginx
+  service: name=nginx state=reloaded
+  sudo_user: root
+  
+- name: restart web frontend
+  command: /sbin/start {{ project_name }} 
+  sudo_user: root
+

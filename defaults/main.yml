@@ -1,0 +1,35 @@
+---
+#This will decide your socket and upstart script name
+project_name: flaskapp
+
+#You can edit this path to your own project path
+project_path: /home/ubuntu/flaskapp
+
+#You can edit this path to your own virtual environment path
+venv_path: /home/ubuntu/flaskapp/flaskappenv
+
+#We are using this url to update Ubuntu 14.04(trusty)'s repo to the latest available nginx version
+nginx_key_url: http://nginx.org/keys/nginx_signing.key
+
+#System Packages for Flask, Gunicorn and Nginx
+system_packages:
+    - build-essential
+    - git
+    - nginx
+    - python-dev
+    - python-setuptools
+    - python-pip
+
+#Everything except virtualenv is unnecessary but if you would like to modify this role to install gunicorn without virtualenv, you can do it.
+pip_packages:
+    - virtualenv
+    - gunicorn
+    - flask
+
+#If you want to install ansible packages manually instead of a requirements file you can use this
+virtualenv_packages:
+    - gunicorn
+    - flask
+
+#You can edit this path to install your own requirements to the virtualenv
+venv_requirements_path: /etc/ansible/roles/nginxdemo/files/requirements.txt
