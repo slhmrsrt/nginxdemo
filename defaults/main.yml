@@ -3,10 +3,10 @@
 project_name: flaskapp
 
 #You can edit this path to your own project path
-project_path: /home/ubuntu/flaskapp
+project_path: /home/vagrant/flaskapp
 
 #You can edit this path to your own virtual environment path
-venv_path: /home/ubuntu/flaskapp/flaskappenv
+venv_path: /home/vagrant/flaskapp/flaskappenv
 
 #We are using this url to update Ubuntu 14.04(trusty)'s repo to the latest available nginx version
 nginx_key_url: http://nginx.org/keys/nginx_signing.key
