@@ -38,18 +38,22 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "./", "C:/www/"
+  config.vm.synced_folder "./", "/var/www/"
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   # config.vm.provision "shell", inline: <<-SHELL
+  #   sudo apt-add-repository -y ppa:ansible/ansible
   #   sudo apt-get update
-  #   sudo apt-get install -y apache2
+  #   sudo apt-get install -y ansible
+  #   sudo mv ./ /etc/ansible/roles/nginxdemo
+  #   
   # SHELL
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "tests/test.yml"
-	ansible.inventory_path = "tests/inventory"
+
+   config.vm.provision "ansible_local" do |ansible|
+    ansible.inventory_path = "/etc/ansible/roles/nginxdemo/tests/inventory"
+    ansible.playbook = "/etc/ansible/roles/nginxdemo/tests/test.yml"
     ansible.verbose = "true"
   end
 end
