@@ -49,8 +49,8 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y ansible
   #   sudo mkdir /etc/ansible/roles/nginxdemo
   #   sudo mkdir /home/vagrant/flaskapp
-  #   sudo rsync -av --progress . /etc/ansible/roles/nginxdemo/ --exclude Vagrantfile
-  #   sudo rsync -av --progress tests/flaskapp /home/vagrant/flaskapp
+  #   sudo rsync -av --progress /var/www/ /etc/ansible/roles/nginxdemo/ --exclude Vagrantfile
+  #   sudo rsync -av --progress /var/www/tests/flaskapp /home/vagrant/flaskapp
   # SHELL
 
    config.vm.provision "ansible_local" do |ansible|
