@@ -48,7 +48,7 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y ansible
   #   sudo mv ./ /etc/ansible/roles/nginxdemo
-  #   
+  #   sudo mv /etc/ansible/roles/nginxdemo/tests/flaskapp /home/vagrant/flaskapp
   # SHELL
 
    config.vm.provision "ansible_local" do |ansible|
